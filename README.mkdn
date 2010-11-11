@@ -1,0 +1,44 @@
+#Glossa-Interpreter-GUI-Components
+
+Java Swing components that can be used to easily provide I/O and stack inspection for a ΓΛΩΣΣΑ intepreter instance.
+For more information about the interpreter [click here](http://github.com/cyberpython/glossa-interpreter).
+
+##License
+
+Copyright (c) Georgios Migdos
+
+Source code is available under the terms of the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+
+[Antlr 3](http://www.antlr.org/) is copyright of Terence Parr and it is available under the terms of the [BSD license](http://www.antlr.org/license.html).
+
+[jOpt Simple](http://jopt-simple.sourceforge.net/) is copyright of Paul R. Holser and it is available under the terms of the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+
+##Build instructions
+
+To build the project’s code you will need :
+
+- [JDK (6.x+)](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+- [Apache Ant](http://ant.apache.org/) (built-in in Netbeans)
+- [Antlr 3.2](http://www.antlr.org/download/antlr-3.2.jar) (*)
+- [JOpt Simple](http://jopt-simple.sourceforge.net/) (*)
+
+(*) If you have an active internet connection antlr and jopt-simple will be downloaded automatically to the correct directory during the first build, otherwise you have to copy antlr-3.2.jar and jopt-simple-3.2.jar to glossa-interpreter/lib/
+
+
+Open a terminal and give:
+
+    git clone git://github.com/cyberpython/glossa-interpreter-gui-components.git
+    cd glossa-interpreter-gui-components
+    ant jar
+
+##Running the demo applications
+
+To run the demo application you must have a JRE (6.x+) installed. Then you can give:
+
+    java -jar dist/glossa-interpreter-gui-components.jar
+
+##Screenshots    
+![Screenshot][screenshot]
+[screenshot]: http://img574.imageshack.us/img574/5128/glossaguicomponents.png  "Screenshot of the demo application."
+
+
