@@ -91,6 +91,11 @@ public class StackRenderer extends JPanel implements InterpreterListener{
 
     }
 
+
+    public void readStatementExecuted(Interpreter sender, Integer line) {
+
+    }
+
     public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
         JPanel p = this.stack.peek();
         if(p!=null){

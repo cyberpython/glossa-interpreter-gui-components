@@ -91,6 +91,10 @@ public class JInterpreterMessagesList extends JList implements InterpreterListen
 
     }
 
+    public void readStatementExecuted(Interpreter sender, Integer line) {
+
+    }
+
     public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
     }
 
