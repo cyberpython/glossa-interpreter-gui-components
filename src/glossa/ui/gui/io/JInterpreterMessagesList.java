@@ -61,21 +61,25 @@ public class JInterpreterMessagesList extends JList implements InterpreterListen
             this.interpreter.removeListener(this);
         }
         this.interpreter = interpreter;
-        this.interpreter.addListener(this);
+        if (this.interpreter != null) {
+            this.interpreter.addListener(this);
+        }
     }
 
     public void parsingAndSemanticAnalysisFinished(boolean success) {
         model.clear();
-        MessageLog msgLog = interpreter.getMsgLog();
-        List<ErrorMessage> errors = msgLog.getErrorMessages();
-        for (Iterator<ErrorMessage> it = errors.iterator(); it.hasNext();) {
-            ErrorMessage errorMessage = it.next();
-            model.addElement(errorMessage);
-        }
-        List<WarningMessage> warnings = msgLog.getWarningMessages();
-        for (Iterator<WarningMessage> it = warnings.iterator(); it.hasNext();) {
-            WarningMessage warningMessage = it.next();
-            model.addElement(warningMessage);
+        if (this.interpreter != null) {
+                MessageLog msgLog = interpreter.getMsgLog();
+                List<ErrorMessage> errors = msgLog.getErrorMessages();
+                for (Iterator<ErrorMessage> it = errors.iterator(); it.hasNext();) {
+                    ErrorMessage errorMessage = it.next();
+                    model.addElement(errorMessage);
+                }
+                List<WarningMessage> warnings = msgLog.getWarningMessages();
+                for (Iterator<WarningMessage> it = warnings.iterator(); it.hasNext();) {
+                    WarningMessage warningMessage = it.next();
+                    model.addElement(warningMessage);
+                }
         }
         this.repaint();
     }
