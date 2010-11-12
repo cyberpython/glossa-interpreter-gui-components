@@ -70,6 +70,10 @@ public class ComponentsDemo extends javax.swing.JFrame implements InterpreterLis
     public void runtimeError() {
     }
 
+    public void executionStarted(Interpreter i) {
+
+    }
+
     public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
         final Interpreter inter = sender;
         Thread t = new Thread(new Runnable() {
@@ -83,6 +87,10 @@ public class ComponentsDemo extends javax.swing.JFrame implements InterpreterLis
             }
         });
         t.start();
+    }
+
+    public void executionStopped(Interpreter i) {
+
     }
 
     public void stackPopped() {

@@ -83,7 +83,15 @@ public class JInterpreterMessagesList extends JList implements InterpreterListen
     public void runtimeError() {
     }
 
+    public void executionStarted(Interpreter i) {
+
+    }
+
     public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
+    }
+
+    public void executionStopped(Interpreter i) {
+
     }
 
     public void stackPopped() {

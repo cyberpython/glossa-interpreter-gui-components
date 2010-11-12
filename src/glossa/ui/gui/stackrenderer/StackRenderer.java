@@ -87,6 +87,9 @@ public class StackRenderer extends JPanel implements InterpreterListener{
         this.repaint();
     }
 
+    public void executionStarted(Interpreter i) {
+
+    }
 
     public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
         JPanel p = this.stack.peek();
@@ -99,6 +102,9 @@ public class StackRenderer extends JPanel implements InterpreterListener{
         this.repaint();
     }
 
+    public void executionStopped(Interpreter i) {
+        
+    }
 
 
 }
