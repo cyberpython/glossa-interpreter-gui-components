@@ -88,7 +88,7 @@ public class StackRenderer extends JPanel implements InterpreterListener{
     }
 
 
-    public void commandExecuted(Interpreter sender, boolean wasPrintStatement) {
+    public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
         JPanel p = this.stack.peek();
         if(p!=null){
             if(p instanceof JFunctionRenderer){

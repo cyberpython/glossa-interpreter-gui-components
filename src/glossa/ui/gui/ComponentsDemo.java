@@ -70,7 +70,7 @@ public class ComponentsDemo extends javax.swing.JFrame implements InterpreterLis
     public void runtimeError() {
     }
 
-    public void commandExecuted(Interpreter sender, boolean wasPrintStatement) {
+    public void executionPaused(Interpreter sender, Integer line, Boolean wasPrintStatement) {
         final Interpreter inter = sender;
         Thread t = new Thread(new Runnable() {
 
