@@ -33,7 +33,6 @@ package glossa.ui.gui.stackrenderer.components;
 import glossa.interpreter.symboltable.symbols.RuntimeSymbol;
 import java.util.Iterator;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -49,12 +48,16 @@ public class JVariablesRenderer extends JProgramPartElement {
     }
 
     public void setVariables(List<RuntimeSymbol> vars){
-        DefaultListModel model = new DefaultListModel();
+        try{
+        RuntimeSymbolSortedListModel model = new RuntimeSymbolSortedListModel();
         for (Iterator<RuntimeSymbol> it = vars.iterator(); it.hasNext();) {
             RuntimeSymbol runtimeSymbol = it.next();
             model.addElement(runtimeSymbol);
         }
         this.jList1.setModel(model);
+        }catch(Error e){
+            e.printStackTrace();
+        }
     }
 
     /** This method is called from within the constructor to

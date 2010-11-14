@@ -33,7 +33,6 @@ package glossa.ui.gui.stackrenderer.components;
 import glossa.interpreter.symboltable.symbols.RuntimeConstant;
 import java.util.Iterator;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -48,7 +47,7 @@ public class JConstantsRenderer extends JProgramPartElement {
     }
 
     public void setConstants(List<RuntimeConstant> consts){
-        DefaultListModel model = new DefaultListModel();
+        RuntimeSymbolSortedListModel model = new RuntimeSymbolSortedListModel();
         for (Iterator<RuntimeConstant> it = consts.iterator(); it.hasNext();) {
             RuntimeConstant runtimeConstant = it.next();
             model.addElement(runtimeConstant);

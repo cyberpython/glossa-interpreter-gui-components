@@ -24,6 +24,7 @@
 
 package glossa.ui.gui.io;
 
+import java.awt.Rectangle;
 import javax.swing.JEditorPane;
 import javax.swing.text.Element;
 import javax.swing.text.StyleConstants;
@@ -82,6 +83,7 @@ public class JRuntimeWindow extends JEditorPane {
         }
         try{
             document.insertBeforeEnd(mainParagraph, txt);
+            setCaretPosition(document.getLength());
         }catch(Exception e){
             System.err.println(e.getLocalizedMessage());
         }
