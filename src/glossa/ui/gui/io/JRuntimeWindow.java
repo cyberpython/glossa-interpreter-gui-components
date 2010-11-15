@@ -55,6 +55,7 @@ public class JRuntimeWindow extends JEditorPane {
         setText(initialContent);
         document = (HTMLDocument) getDocument();
         mainParagraph = document.getElement(document.getDefaultRootElement(), StyleConstants.NameAttribute, HTML.Tag.P);
+        document.setAsynchronousLoadPriority(5);
 
         this.out = new JRuntimeWindowPrintStream(false, this);
         this.err = new JRuntimeWindowPrintStream(true, this);
