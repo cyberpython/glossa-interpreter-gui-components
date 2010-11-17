@@ -30,6 +30,7 @@
 
 package glossa.ui.gui.stackrenderer.components;
 
+import glossa.interpreter.symboltable.symbols.RuntimeArray;
 import glossa.interpreter.symboltable.symbols.RuntimeSymbol;
 import java.util.Iterator;
 import java.util.List;
@@ -39,17 +40,20 @@ import java.util.List;
  * @author Georgios Migdos <cyberpython@gmail.com>
  */
 public class JVariablesRenderer extends JProgramPartElement {
+
+    private RuntimeSymbolSortedListModel model;
     
 
     /** Creates new form JVariablesRenderer */
     public JVariablesRenderer() {
         initComponents();
         this.jList1.setCellRenderer(new JRuntimeSymbolListCellRenderer());
+        model =  new RuntimeSymbolSortedListModel();
     }
 
     public void setVariables(List<RuntimeSymbol> vars){
         try{
-        RuntimeSymbolSortedListModel model = new RuntimeSymbolSortedListModel();
+        model = new RuntimeSymbolSortedListModel();
         for (Iterator<RuntimeSymbol> it = vars.iterator(); it.hasNext();) {
             RuntimeSymbol runtimeSymbol = it.next();
             model.addElement(runtimeSymbol);
@@ -57,6 +61,14 @@ public class JVariablesRenderer extends JProgramPartElement {
         this.jList1.setModel(model);
         }catch(Error e){
             e.printStackTrace();
+        }
+    }
+
+    private void dblClick(){
+        RuntimeSymbol s = model.get(jList1.getSelectedIndex());
+        if((s!=null)&&(s instanceof RuntimeArray)){
+            JRuntimeArrayDialog arrayDialog = new JRuntimeArrayDialog(null, false, (RuntimeArray)s);
+            arrayDialog.setVisible(true);
         }
     }
 
@@ -82,6 +94,11 @@ public class JVariablesRenderer extends JProgramPartElement {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -105,6 +122,12 @@ public class JVariablesRenderer extends JProgramPartElement {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        if(evt.getClickCount()>=2){
+            dblClick();
+        }
+    }//GEN-LAST:event_jList1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
